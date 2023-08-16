@@ -51,9 +51,7 @@ def test_print_purchase_count_task():
 class UserModelTest(TestCase):
 
     def test_create_user(self):
-        """
-        Тестує створення об'єкта User.
-        """
+
         username = "testuser"
         email = "test@example.com"
         password = "testpassword"
@@ -75,9 +73,7 @@ User = get_user_model()
 class UserViewSetTest(APITestCase):
 
     def test_create_user(self):
-        """
-        Тестує створення об'єкта User через API.
-        """
+
         url = '/users/'
         data = {
             'username': 'testuser',
@@ -90,9 +86,7 @@ class UserViewSetTest(APITestCase):
         self.assertEqual(User.objects.get().username, 'testuser')
 
     def test_access_user(self):
-        """
-        Тестує доступ до об'єкта User через API.
-        """
+
         user = User.objects.create(username='testuser', email='test@example.com', password='testpassword')
         url = f'/users/{user.id}/'
         response = self.client.get(url, format='json')
@@ -100,9 +94,7 @@ class UserViewSetTest(APITestCase):
         self.assertEqual(response.data['username'], 'testuser')
 
     def test_delete_user(self):
-        """
-        Тестує видалення об'єкта User через API.
-        """
+
         user = User.objects.create(username='testuser', email='test@example.com', password='testpassword')
         url = f'/users/{user.id}/'
         response = self.client.delete(url, format='json')
